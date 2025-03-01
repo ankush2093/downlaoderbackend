@@ -59,25 +59,7 @@ app.post("/api/download", async (req, res) => {
   }
 });
 
-// // ✅ Serve and Auto-Delete File After Download
-// app.get("/downloads/:filename", (req, res) => {
-//   const filePath = path.join(DOWNLOAD_DIR, req.params.filename);
-
-//   if (!fs.existsSync(filePath)) {
-//     return res.status(404).json({ error: "File not found" });
-//   }
-
-//   res.download(filePath, (err) => {
-//     if (!err) {
-//       // ✅ Delete the file after successful download
-//       fs.unlink(filePath, (unlinkErr) => {
-//         if (unlinkErr) console.error("Error deleting file:", unlinkErr);
-//         else console.log(`Deleted: ${filePath}`);
-//       });
-//     }
-//   });
-// });
-
+// ✅ API to serve downloaded files
 app.get("/downloads/:filename", (req, res) => {
   const filePath = path.join(DOWNLOAD_DIR, req.params.filename);
 
